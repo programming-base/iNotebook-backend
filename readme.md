@@ -1,4 +1,3 @@
-
 # 📒 iNotebook Backend
 
 A RESTful backend for **iNotebook**, built with **Node.js**, **Express.js**, and **MongoDB**. This project handles user authentication, session management, and CRUD operations for notes while serving as the backend API for the React frontend.
@@ -227,7 +226,7 @@ This backend works together with the React frontend.
 Frontend Repository:
 
 ```text
-<Add Frontend Repository Link Here>
+https://github.com/programming-base/inotebook.git
 ```
 
 ---
