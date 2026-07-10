@@ -12,8 +12,11 @@ const app = express();
 
 app.set("trust proxy", 1);
 
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+const isProduction = process.env.NODE_ENV === "production";
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL||"http://localhost:5173",
+  origin: frontendUrl,
   credentials: true
 }));
 
@@ -27,8 +30,8 @@ app.use(session({
   saveUninitialized:false,
   proxy:true,
   cookie:{
-    sameSite:"none",
-    secure:true,
+    sameSite:isProduction ? "none" : "lax",
+    secure:isProduction,
   },
   store: MongoStore.create(
     {
