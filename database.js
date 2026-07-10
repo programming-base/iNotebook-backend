@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-mongoose.connect("mongodb://localhost:27017/inotebook").then(
+mongoose.connect(process.env.MONGO_URI||"mongodb://localhost:27017/inotebook").then(
     ()=>{
         console.log("Connected to MongoDB");
     }

@@ -11,7 +11,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated.js";
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: process.env.FRONTEND_URL||"http://localhost:5173",
   credentials: true
 }));
 
@@ -20,12 +20,12 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.use(session({
-  secret:"iwanabenexttoyou",
+  secret:process.env.SESSION_SECRET,
   resave:false,
   saveUninitialized:false,
   store: MongoStore.create(
     {
-      mongoUrl:"mongodb://localhost:27017/inotebook",
+      mongoUrl:process.env.MONGO_URI||"mongodb://localhost:27017/inotebook",
       collectionName:"sessions",
     }
   )
